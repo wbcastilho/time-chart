@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gráfico de Horários</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+  <canvas id="myChart"></canvas>
+
+  <script>
+    // Dados de exemplo
+    var data = [
+      { time: '09:00', value: 10 },
+      { time: '09:05', value: 15 },
+      { time: '12:15', value: 17 },
+      // Adicione mais dados conforme necessário
+    ];
+
+    // Converter os horários para objetos Date
+    var chartData = data.map(function(item) {
+      return {
+        x: new Date('1970-01-01T' + item.time),
+        y: item.value
+      };
+    });
+
+    // Configuração do gráfico
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: 'Valores',
+          data: chartData,
+          backgroundColor: 'rgba(0, 123, 255, 0.5)',
+          borderColor: 'rgba(0, 123, 255, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              displayFormats: {
+                hour: 'HH:mm'
+              },             
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Horário'
+            }
+          },
+          y: {
+            scaleLabel: {
+              display: true,
+              labelString: 'Valor'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
