@@ -11,16 +11,18 @@
   <script>
     // Dados de exemplo
     var data = [
-      { time: '09:00', value: 10 },
-      { time: '09:05', value: 15 },
-      { time: '12:15', value: 17 },
+      { datetime: '2023-05-01T23:00', value: 10 },
+      { datetime: '2023-05-01T23:05', value: 15 },
+      { datetime: '2023-05-02T00:15', value: 17 },
+      { datetime: '2023-05-03T00:15', value: 17 },
       // Adicione mais dados conforme necessário
     ];
 
     // Converter os horários para objetos Date
     var chartData = data.map(function(item) {
       return {
-        x: new Date('1970-01-01T' + item.time),
+        // x: new Date('1970-01-01T' + item.time),
+        x: new Date(item.datetime),
         y: item.value
       };
     });
@@ -42,14 +44,23 @@
         scales: {
           x: {
             type: 'time',
-            time: {
-              displayFormats: {
-                hour: 'HH:mm'
-              },             
-            },
-            scaleLabel: {
-              display: true,
-              labelString: 'Horário'
+            // time: {
+            //   displayFormats: {
+            //     hour: 'HH:mm'
+            //   },             
+            // },
+            // scaleLabel: {
+            //   display: true,
+            //   labelString: 'Horário'
+            // }
+            ticks: {
+              major: {
+                enabled: true
+              },
+              font: (context) => {
+                const boldedTicks = context.tick && context.tick.major ? 'bold' : '';
+                return { weight: boldedTicks };
+              }
             }
           },
           y: {
