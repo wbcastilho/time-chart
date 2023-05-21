@@ -13,10 +13,40 @@
   <script>   
     // Dados de exemplo
     var data = [
-      { datetime: '2023-05-01T23:00', value: 10 },
-      { datetime: '2023-05-01T23:05', value: 15 },
-      { datetime: '2023-05-02T00:15', value: 17 },
-      { datetime: '2023-05-03T00:15', value: 17 },
+      { datetime: '2023-05-02T18:00:00', value: 17 },
+      { datetime: '2023-05-02T23:05:00', value: 11 },
+      { datetime: '2023-05-02T23:10:00', value: 12 },
+      { datetime: '2023-05-02T23:15:00', value: 13 },
+      { datetime: '2023-05-02T23:20:00', value: 14 },
+      { datetime: '2023-05-02T23:25:00', value: 15 },
+      { datetime: '2023-05-02T23:30:00', value: 16 },
+      { datetime: '2023-05-02T23:35:00', value: 16 },
+      { datetime: '2023-05-02T23:40:00', value: 16 },
+      { datetime: '2023-05-02T23:45:00', value: 16 },
+
+      { datetime: '2023-05-02T23:50:00', value: 10 },
+      { datetime: '2023-05-02T23:55:00', value: 11 },
+      { datetime: '2023-05-03T00:00:00', value: 12 },
+      { datetime: '2023-05-03T00:05:00', value: 12 },
+      { datetime: '2023-05-03T00:10:00', value: 12 },
+      { datetime: '2023-05-03T00:15:00', value: 12 },
+      { datetime: '2023-05-03T00:20:00', value: 12 },
+      { datetime: '2023-05-03T00:25:00', value: 12 },
+      { datetime: '2023-05-03T00:30:00', value: 12 },
+      { datetime: '2023-05-03T00:35:00', value: 12 },
+         
+      { datetime: '2023-05-03T00:40:00', value: 12 },
+      { datetime: '2023-05-03T00:45:00', value: 12 },
+      { datetime: '2023-05-03T00:50:00', value: 12 },
+      { datetime: '2023-05-03T00:55:00', value: 12 },
+      { datetime: '2023-05-03T01:00:00', value: 12 },
+      { datetime: '2023-05-03T01:05:00', value: 12 },
+      { datetime: '2023-05-03T01:10:00', value: 12 },
+      { datetime: '2023-05-03T01:15:00', value: 12 },
+      { datetime: '2023-05-03T01:20:00', value: 12 },
+      { datetime: '2023-05-03T01:25:00', value: 12 },
+     
+      
       // Adicione mais dados conforme necessário
     ];
 
@@ -47,6 +77,9 @@
         scales: {
           x: {
             type: 'time',
+            time: {
+              tooltipFormat: 'dd/MM/yyyy HH:mm:ss',
+            },
             // time: {
             //   unit: 'day',
             //   displayFormats: {
