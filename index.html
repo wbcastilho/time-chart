@@ -6,9 +6,11 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
-  <canvas id="myChart"></canvas>
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
 
-  <script>
+  <script>   
     // Dados de exemplo
     var data = [
       { datetime: '2023-05-01T23:00', value: 10 },
@@ -35,12 +37,13 @@
         datasets: [{
           label: 'Valores',
           data: chartData,
-          backgroundColor: 'rgba(0, 123, 255, 0.5)',
-          borderColor: 'rgba(0, 123, 255, 1)',
-          borderWidth: 1
+          backgroundColor: "rgba(22, 87, 153, 0.6)",
+          borderColor: "rgba(22, 87, 153, 0.6)",
         }]
       },
       options: {
+        responsive: true,
+        // maintainAspectRatio: false,
         scales: {
           x: {
             type: 'time',
@@ -55,21 +58,43 @@
             //   labelString: 'Horário'
             // },
             ticks: {
+              //maxTicksLimit: 10,
               major: {
                 enabled: true
+              },             
+              callback: (value, index, ticks) => {
+                const date = new Date(value);
+                return new Intl.DateTimeFormat('pt-br', {
+                  hour: 'numeric',
+                  minute: 'numeric',
+                  second: 'numeric',
+                  day: 'numeric',
+                  month: 'numeric',
+                  year: 'numeric'
+                }).format(date)
               },
-              font: (context) => {
-                const boldedTicks = context.tick && context.tick.major ? 'bold' : '';
-                return { weight: boldedTicks };
-              }
+              // font: (context) => {
+              //   const boldedTicks = context.tick && context.tick.major ? 'bold' : '';
+              //   return { weight: boldedTicks };
+              // },
             }
           },
           y: {
+            min: 10,
+            max: 20,
             scaleLabel: {
               display: true,
               labelString: 'Valor'
             }
           }
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          // tooltip: {
+          //   locale: 'pt-br'
+          // }
         }
       }
     });
