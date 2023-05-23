@@ -73,7 +73,7 @@
       },
       options: {
         responsive: true,
-        // maintainAspectRatio: false,
+        maintainAspectRatio: false,
         scales: {
           x: {
             type: 'time',
@@ -91,7 +91,7 @@
             //   labelString: 'Horário'
             // },
             ticks: {
-              //maxTicksLimit: 10,
+              maxTicksLimit: 4,
               major: {
                 enabled: true
               },             
@@ -101,9 +101,9 @@
                   hour: 'numeric',
                   minute: 'numeric',
                   second: 'numeric',
-                  day: 'numeric',
-                  month: 'numeric',
-                  year: 'numeric'
+                  // day: 'numeric',
+                  // month: 'numeric',
+                  // year: 'numeric'
                 }).format(date)
               },
               // font: (context) => {
@@ -124,10 +124,7 @@
         plugins: {
           legend: {
             display: false
-          },
-          // tooltip: {
-          //   locale: 'pt-br'
-          // }
+          },          
         }
       }
     });
